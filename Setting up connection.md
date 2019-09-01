@@ -35,6 +35,7 @@ local server usually runs on port 3306
 
 - Download the [connector](https://dev.mysql.com/downloads/connector/j/)
 - place the connector.jar file in the same directory as your .java and its .class file
+- Add the connector to the classpath
 - Open the dir containing the connect.java file in command prompt
 
 - To Compile
