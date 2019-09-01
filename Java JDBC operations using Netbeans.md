@@ -89,7 +89,7 @@ public class Jdbctest {
 }
 ```
 
-Deletion
+## Deletion
 ```
 package jdbctest;
 import java.sql.*;
