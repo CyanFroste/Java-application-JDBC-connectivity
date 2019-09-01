@@ -4,7 +4,7 @@
 - Right click on Libraries under Project tab - Add JAR/Folder
 - Add the JDBC [Connector](https://dev.mysql.com/downloads/connector/j/) (.jar file)
 - Edit the Source code in the .java file under Source packages under Project tab
-![](Images\operations.png)
+![](https://github.com/CyanFroste/JAVA-DB/blob/master/Images/operations.png)
 
 # OPERATIONS
 
