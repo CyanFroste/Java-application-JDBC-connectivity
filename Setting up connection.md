@@ -47,7 +47,7 @@ local server usually runs on port 3306
  ```
  If it shows a time zone error like this :
 
-![](Images\time-zone-error.png)
+![](https://github.com/CyanFroste/JAVA-DB/blob/master/Images/time-zone-error.png)
 
 Then Embed this code in the connection string
 ```
@@ -55,7 +55,7 @@ jdbc:mysql://localhost:3306/Database_name?useLegacyDatetimeCode=false&serverTime
 ```
 
 ### When it's done
-![](Images\connection-success.png)
+![](https://github.com/CyanFroste/JAVA-DB/blob/master/Images/connection-success.png)
 
 
 
