@@ -6,3 +6,4 @@
   - [Update](https://github.com/CyanFroste/JAVA-DB/blob/master/Java%20JDBC%20operations%20using%20Netbeans.md#update)
   - [Deletion](https://github.com/CyanFroste/JAVA-DB/blob/master/Java%20JDBC%20operations%20using%20Netbeans.md#deletion)
   - [Prepared Statements](https://github.com/CyanFroste/JAVA-DB/blob/master/Java%20JDBC%20operations%20using%20Netbeans.md#prepared-statements)
+  - [Metadata](https://github.com/CyanFroste/JAVA-DB/blob/master/Metadata.md)
