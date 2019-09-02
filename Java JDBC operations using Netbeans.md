@@ -175,5 +175,133 @@ public class Jdbctest {
 }
 ```
 
+## JDBC Transactions
+Save all the made changes or None at all
+
+```
+package jdbctest;
+
+import java.sql.*;
+import java.util.Scanner;
+
+public class Jdbctest {
+    private static final String URL = "jdbc:mysql://localhost:3306/test?useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+    private static final String USER = "root";
+    private static final String PASS = "";
+    
+    public static void main(String[] args) throws SQLException {
+        
+        Connection con = null;
+	Statement stmt = null;
+	ResultSet res = null;
+        
+        try{
+            con = DriverManager.getConnection(URL, USER, PASS);
+            
+                // Turn off auto commit
+		con.setAutoCommit(false);
+
+		// Show salaries BEFORE
+		System.out.println("Salaries BEFORE\n");
+		showSalaries(con, "HR");
+		showSalaries(con, "Engineering");
+
+		// Transaction Step 1: Delete all HR employees
+		stmt = con.createStatement();
+		stmt.executeUpdate("delete from employees where dept='HR'");
+
+		// Transaction Step 2: Set salaries to 300000 for all Engineering
+		stmt.executeUpdate("update employees set salary=300000 where dept='Engineering'");
+
+		System.out.println("\n>> Transaction steps are ready.\n");
+
+		// Ask user if it is okay to save
+		boolean ok = save();
+
+		if (ok) {
+			// store in database
+			con.commit();
+			System.out.println("\n>> Transaction COMMITTED.\n");
+		} else {
+			// discard
+			con.rollback();
+			System.out.println("\n>> Transaction ROLLED BACK.\n");
+		}
+                // Show salaries AFTER
+		System.out.println("Salaries AFTER\n");
+		showSalaries(con, "HR");
+		showSalaries(con, "Engineering");
+
+	} catch (SQLException e) {
+		System.err.println(e);
+	} finally {
+		close(con, stmt, null);
+	}
+}
+    
+    private static boolean save() {
+        String input;
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Is it okay to save?  yes/no: ");
+            input = scanner.nextLine();
+        }
+
+            return input.equalsIgnoreCase("yes");
+	}
+
+    private static void showSalaries(Connection con, String theDepartment) throws SQLException {
+	PreparedStatement stmt = null;
+	ResultSet res = null;
+
+	System.out.println("Show Salaries for Department: " + theDepartment);
+
+	try {
+		// Prepare statement
+		stmt = con.prepareStatement("select * from employees where dept=?");
+
+		stmt.setString(1, theDepartment);
+
+		// Execute SQL query
+		res = stmt.executeQuery();
+
+		// Process result set
+		while (res.next()) {
+			int ID = res.getInt("ID");
+			String name = res.getString("name");
+			String dept = res.getString("dept");
+			int salary = res.getInt("salary");
+
+			System.out.printf("%d, %s, %s, %d\n", ID, name, dept, salary);
+		}
+
+		System.out.println();
+	} catch (SQLException e) {
+		System.err.println(e);
+	} finally {
+		close(stmt, res);
+	}
+
+}
+
+    private static void close(Connection con, Statement stmt, ResultSet res) throws SQLException {
+	if (res != null) {
+		res.close();
+	}
+
+	if (stmt != null) {
+		stmt.close();
+	}
+
+	if (con != null) {
+		con.close();
+	}
+}
+    
+    private static void close(Statement stmt, ResultSet res) throws SQLException {
+
+	close(null, stmt, res);
+    }
+}
+```
 
 
