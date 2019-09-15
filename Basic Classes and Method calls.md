@@ -112,6 +112,10 @@ New_Form's_Class_name MainClass = new New_Form's_Class_name();
         this.dispose();
         MainClass.setVisible(true);
 ```
+- To Close the entire app and clean up everything
+```
+System.exit(0);
+```
 
 ## Getting KeyCode inside  Key Press/Released/Typed  events
 ```
