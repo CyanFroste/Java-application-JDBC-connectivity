@@ -11,4 +11,5 @@
   - Download the incubating netbeans-bin.zip file
   - Extract
   - Copy and paste in C's Root directory
+  
   ![](https://github.com/CyanFroste/JAVA-DB-GUI-APPLICATION/blob/master/Images/netbeans-dir.png)
