@@ -105,16 +105,30 @@ int ColumnCount = model.getColumnCount();
 model.setRowCount(RowCount);
 ```
 
-## Dispose Current form and Create New form instance
-
+## DISPOSE/EXIT CURRENT FRAME AND CREATE NEW FRAME(BY CREATING ITS MAIN CLASS)
 ```
 New_Form's_Class_name MainClass = new New_Form's_Class_name();
-        this.dispose();
+        this.dispose();     // only closes current window
         MainClass.setVisible(true);
 ```
 - To Close the entire app and clean up everything
 ```
 System.exit(0);
+```
+
+## OVERLOADING MAIN CLASS's CONSTRUCTOR
+```
+public Class_name() {
+        initComponents();  
+}
+```
+Now, Passing a parameter through the same Class
+```    
+String passedName;
+public Class_name(String name) {
+        initComponents();        
+        this.passedName = name;
+}        
 ```
 
 ## Getting KeyCode inside  Key Press/Released/Typed  events
