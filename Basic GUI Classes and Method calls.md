@@ -65,6 +65,9 @@ JCombobox_name.setSelectedItem("Name");
 String Value = JSpinner_name.getValue().toString();
 ```
 ```
+JSpinner_name.setValue(value);
+```
+```
 int Value = Integer.parseInt(JSpinner_name.getValue().toString());
 ```
 - Remodelling a JSpinner to visually change its value (zero here)
